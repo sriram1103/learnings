@@ -5,3 +5,6 @@
 #split list with given number of elements
 f = lambda A,n : [A[i:i+n] for i in range(0,len(A),n)]
 f(A)
+
+#dict sort by value
+sorted_d = sorted(d.items(), key=lambda (k,v): v)

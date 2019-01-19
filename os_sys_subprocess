@@ -1,0 +1,40 @@
+os.path.exists(parFile):
+os.remove(parFile)
+os.getpid()
+
+HOST_NAME=(os.uname()[1]).split(".")[0]
+os.environ["BACKUP_DEBUG"]:
+os.path.isdir(HANDLER_DIR):
+
+sts = os.waitpid(p.pid, 0)[1]
+os.makedirs(theBackupDir)
+for root, dirs, files in os.walk(path):
+ 
+path = "%s%s" % (base, os.readlink("%s/%s" % (base, link)))
+path = os.path.abspath(path)
+os.system("/bin/rm -rf %s" % theBackupDevice)
+os.system("/bin/mkdir -p -m700 %s" % theBackupDevice)
+os.chdir(theBackupBaseDir)
+for folder in os.listdir(theBackupBaseDir):
+   if os.path.isdir(folder):
+       if os.path.getmtime(folder) < d:
+os.chdir(theBackupDir)
+
+
+
+sys.path.append(HANDLER_DIR)
+sys.exit(1)
+def main(argv=sys.argv):
+sys.exit("Error during backup. Reason: %s" %(e))
+
+p = subprocess.Popen(params, stdout=FNULL, stderr=FNULL)
+raise subprocess.CalledProcessError(sts, params)
+proc = subprocess.Popen(["/sbin/parted", "-m", "-s", parDev, "unit", "B", "print"], stdout=subprocess.PIPE, stdin=subprocess.PIPE,stderr=subprocess.PIPE)
+proc = subprocess.Popen(["/sbin/tune2fs", "-l", parDev], stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+proc = subprocess.Popen(["/sbin/blkid", "-c", "/dev/null"], stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+proc = subprocess.Popen(["/sbin/lvm", "pvs", "--nohead"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+proc = subprocess.Popen(["/sbin/lvm", "lvs", "--units", "h", "--nohead"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+proc = subprocess.Popen(["/sbin/lvm", "pvs", "--nohead"], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+proc = subprocess.Popen(cmd,stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE,shell=True)
+subprocess.check_call(["/bin/mt", "-f", theBackupDevice, "rewind"])
+subprocess.check_call(["/bin/mt", "-f", theBackupDevice, "offline"])

@@ -1,6 +1,8 @@
 os.path.exists(parFile):
 os.remove(parFile)
 os.getpid()
+ os.getuid() != 0:
+    sys.exit("You must run this tool as root")
 
 HOST_NAME=(os.uname()[1]).split(".")[0]
 os.environ["BACKUP_DEBUG"]:

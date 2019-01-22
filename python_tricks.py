@@ -159,3 +159,155 @@ def proxy(func):
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
     return wrapper
+
+ def myfunc(x, y, z):
+    print(x, y, z)
+
+tuple_vec = (1, 0, 1)
+dict_vec = {'x': 1, 'y': 0, 'z': 1}
+
+>>> myfunc(*tuple_vec)
+1, 0, 1
+
+>>> myfunc(**dict_vec)
+1, 0, 1
+ 
+ >>> my_mapping = {'a': 23, 'b': 42, 'c': 0xc0ffee}
+>>> my_mapping
+{'b': 42, 'c': 12648430. 'a': 23}  # 😞
+
+# The "json" module can do a much better job:
+>>> import json
+>>> print(json.dumps(my_mapping, indent=4, sort_keys=True))
+{
+    "a": 23,
+    "b": 42,
+    "c": 12648430
+}
+
+# Note this only works with dicts containing
+# primitive types (check out the "pprint" module):
+>>> json.dumps({all: 'yup'})
+TypeError: keys must be a string
+ 
+ >>> from collections import namedtuple
+>>> Car = namedtuple('Car', 'color mileage')
+
+# Our new "Car" class works as expected:
+>>> my_car = Car('red', 3812.4)
+>>> my_car.color
+'red'
+>>> my_car.mileage
+3812.4
+
+# We get a nice string repr for free:
+>>> my_car
+Car(color='red' , mileage=3812.4)
+
+# Like tuples, namedtuples are immutable:
+>>> my_car.color = 'blue'
+AttributeError: "can't set attribute"
+ 
+ name_for_userid = {
+    382: "Alice",
+    590: "Bob",
+    951: "Dilbert",
+}
+
+def greeting(userid):
+    return "Hi %s!" % name_for_userid.get(userid, "there")
+
+>>> greeting(382)
+"Hi Alice!"
+
+>>> greeting(333333)
+"Hi there!"
+ 
+ >>> xs = {'a': 4, 'b': 3, 'c': 2, 'd': 1}
+
+>>> sorted(xs.items(), key=lambda x: x[1])
+[('d', 1), ('c', 2), ('b', 3), ('a', 4)]
+
+# Or:
+
+>>> import operator
+>>> sorted(xs.items(), key=operator.itemgetter(1))
+[('d', 1), ('c', 2), ('b', 3), ('a', 4)]
+ 
+ >>> x = {'a': 1, 'b': 2}
+>>> y = {'b': 3, 'c': 4}
+
+>>> z = {**x, **y}
+
+>>> z
+{'c': 4, 'a': 1, 'b': 3}
+
+# In Python 2.x you could
+# use this:
+>>> z = dict(x, **y)
+>>> z
+{'a': 1, 'c': 4, 'b': 3}
+ 
+ >>> a = [1, 2, 3]
+>>> b = a
+
+a == b
+ True
+a is b
+ True
+ 
+c = list(a)
+a == c
+ True
+a is c
+ False
+ 
+An is expression evaluates to True if two variables point to the same (identical) object. 
+ An == expression evaluates to True if the objects referred to by the variables are equal (have the same contents).
+
+Instead of building your own to-string conversion machinery, 
+you’ll be better off adding the __str__ and __repr__ “dunder” methods to your class. 
+ 
+ They are the Pythonic way to control how objects are converted to strings in different situations
+ 
+ class Car:
+    def __init__(self, color, mileage):
+        self.color = color
+        self.mileage = mileage
+
+    def __str__(self):
+        return f'a {self.color} car'
+
+ >>> my_car = Car('red', 37281)
+>>> print(my_car)
+'a red car'
+>>> my_car
+<__console__.Car object at 0x109ca24e0>
+
+ >>> print(my_car)
+a red car
+>>> str(my_car)
+'a red car'
+>>> '{}'.format(my_car)
+'a red car'
+
+ class Car:
+    def __init__(self, color, mileage):
+        self.color = color
+        self.mileage = mileage
+
+    def __repr__(self):
+        return '__repr__ for Car'
+
+    def __str__(self):
+        return '__str__ for Car'
+
+ >>> my_car = Car('red', 37281)
+>>> print(my_car)
+__str__ for Car
+>>> '{}'.format(my_car)
+'__str__ for Car'
+>>> my_car
+__repr__ for Car
+
+

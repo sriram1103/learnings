@@ -392,6 +392,37 @@ with abstract methods bar"
  >>> jack.num_legs, jill.num_legs
 (6, 6)
  
+class MyClass:
+    def method(self):
+        return 'instance method called', self
+
+    @classmethod
+    def classmethod(cls):
+        return 'class method called', cls
+
+    @staticmethod
+    def staticmethod():
+        return 'static method called'
+ 
+>>> obj = MyClass()
+>>> obj.method()
+('instance method called', <MyClass instance at 0x11a2>)
+
+ >>> MyClass.method(obj)
+('instance method called', <MyClass instance at 0x11a2>)
+
+ >>> obj.classmethod()
+('class method called', <class MyClass at 0x11a2>)
+
+ >>> obj.staticmethod()
+'static method called'
+
+ >>> MyClass.classmethod()
+('class method called', <class MyClass at 0x11a2>)
+
+>>> MyClass.staticmethod()
+'static method called'
+ 
  
  class CountedObject:
     num_instances = 0
@@ -400,3 +431,111 @@ with abstract methods bar"
         self.__class__.num_instances += 1
 
  
+
+ class Pizza:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    def __repr__(self):
+        return f'Pizza({self.ingredients!r})'
+
+    @classmethod
+    def margherita(cls):
+        return cls(['mozzarella', 'tomatoes'])
+    
+    @classmethod
+    def prosciutto(cls):
+        return cls(['mozzarella', 'tomatoes', 'ham'])
+
+ >>> Pizza.margherita()
+Pizza(['mozzarella', 'tomatoes'])
+
+>>> Pizza.prosciutto()
+Pizza(['mozzarella', 'tomatoes', 'ham'])
+
+ 
+ >>> from collections import ChainMap
+>>> dict1 = {'one': 1, 'two': 2}
+>>> dict2 = {'three': 3, 'four': 4}
+>>> chain = ChainMap(dict1, dict2)
+
+>>> chain
+ChainMap({'one': 1, 'two': 2}, {'three': 3, 'four': 4})
+
+# ChainMap searches each collection in the chain
+# from left to right until it finds the key (or fails):
+>>> chain['three']
+3
+
+ >>> from types import MappingProxyType
+>>> writable = {'one': 1, 'two': 2}
+>>> read_only = MappingProxyType(writable)
+
+# The proxy is read-only:
+>>> read_only['one']
+1
+>>> read_only['one'] = 23
+TypeError:
+"'mappingproxy' object does not support item assignment"
+
+# Updates to the original are reflected in the proxy:
+>>> writable['one'] = 42
+>>> read_only
+mappingproxy({'one': 42, 'two': 2})
+
+ 
+ 
+
+ Stack in python
+  list, collections.deque (preferred)
+ 
+ Queues in python
+  list - slow
+  collection.deque - fast
+  queue.queue - parallel computing 
+ 
+ Priority Queue:
+  List - sort every time a value (key,value) is inserted
+  heapq – List-Based Binary Heaps
+  queue.PriorityQueue – Beautiful Priority Queues - prefered
+ 
+ 
+ my_items=[a,b,c]
+ >>> for i, item in enumerate(my_items):
+...     print(f'{i}: {item}')
+
+0: a
+1: b
+2: c
+
+
+values = []
+for item in collection:
+    values.append(expression)
+
+values = [expression for x in collection]
+ 
+ >>> lst = [1, 2, 3, 4, 5]
+>>> lst
+[1, 2, 3, 4, 5]
+
+#   lst[start:end:step] list slicing
+ 
+>>> lst[::2]
+[1, 3, 5]
+>>> numbers[::-1]
+[5, 4, 3, 2, 1]  #reverse list
+
+#list shallow copy
+>>> copied_lst = lst[:]
+ 
+>>> xs = {'a': 1, 'b': 2}
+>>> ys = {'b': 3, 'c': 4}
+>>> zs = dict(xs, **ys)
+>>> zs
+{'a': 1, 'c': 4, 'b': 3}
+
+>>> zs = {**xs, **ys} # only in python3
+
+
+

@@ -311,3 +311,92 @@ __str__ for Car
 __repr__ for Car
 
 
+class BaseValidationError(ValueError):
+    pass 
+class NameTooShortError(BaseValidationError):
+    pass
+class NameTooLongError(BaseValidationError):
+    pass
+class NameTooCuteError(BaseValidationError):
+    pass
+
+try:
+    validate(name)
+except BaseValidationError as err:
+    handle_validation_error(err)
+
+ >>> xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> ys = list(xs)  # Make a shallow copy 
+ #ys = copy.copy(xs) # shallow copy
+
+
+ >>> xs.append(['new sublist'])
+>>> xs
+[[1, 2, 3], [4, 5, 6], [7, 8, 9], ['new sublist']]
+>>> ys
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+ >>> import copy
+>>> xs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> zs = copy.deepcopy(xs)
+>>> xs[1][0] = 'X'
+>>> xs
+[[1, 2, 3], ['X', 5, 6], [7, 8, 9]]
+>>> zs
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+ 
+ ABC:
+ ====
+ 
+ instantiating the base class is impossible; and 
+ forgetting to implement interface methods in one of the subclasses raises an error as early as possible.
+
+ from abc import ABCMeta, abstractmethod
+
+class Base(metaclass=ABCMeta):
+    @abstractmethod
+    def foo(self):
+        pass
+
+    @abstractmethod
+    def bar(self):
+        pass
+
+class Concrete(Base):
+    def foo(self):
+        pass
+
+ >>> c = Concrete()
+TypeError:
+"Can't instantiate abstract class Concrete 
+with abstract methods bar"
+
+ class Dog:
+    num_legs = 4  # <- Class variable
+
+    def __init__(self, name):
+        self.name = name  # <- Instance variable
+
+>>> jack = Dog('Jack')
+>>> jill = Dog('Jill')
+>>> jack.name, jill.name
+('Jack', 'Jill')
+
+>>> jack.num_legs, jill.num_legs
+(4, 4)
+>>> Dog.num_legs
+4
+ 
+ >>> Dog.num_legs = 6 
+ >>> jack.num_legs, jill.num_legs
+(6, 6)
+ 
+ 
+ class CountedObject:
+    num_instances = 0
+
+    def __init__(self):
+        self.__class__.num_instances += 1
+
+ 

@@ -1,0 +1,116 @@
+usracls05613:/var/log # tcpdump -i eth0 port 67 or port 68 -e -n -vvv
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+12:22:31.725070 c4:34:6b:b7:22:20 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 590: (tos 0x0, ttl 64, id 0, offset 0, flags [none], proto UDP (17), length 576)
+    0.0.0.0.68 > 255.255.255.255.67: [udp sum ok] BOOTP/DHCP, Request from c4:34:6b:b7:22:20, length 548, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Discover
+	    Parameter-Request Option 55, length 24: 
+	      Subnet-Mask, Time-Zone, Default-Gateway, IEN-Name-Server
+	      Domain-Name-Server, RL, Hostname, BS
+	      Domain-Name, SS, RP, EP
+	      Vendor-Option, Server-ID, Vendor-Class, BF
+	      Option 128, Option 129, Option 130, Option 131
+	      Option 132, Option 133, Option 134, Option 135
+	    MSZ Option 57, length 2: 1260
+	    GUID Option 97, length 17: 0.55.49.57.48.54.52.77.88.81.52.53.50.48.52.81.80
+	    ARCH Option 93, length 2: 0
+	    NDI Option 94, length 3: 1.2.1
+	    Vendor-Class Option 60, length 32: "PXEClient:Arch:00000:UNDI:002001"
+	    END Option 255, length 0
+	    PAD Option 0, length 0, occurs 212
+12:22:31.725841 00:50:56:b8:f8:f5 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    10.111.9.228.67 > 255.255.255.255.68: [udp sum ok] BOOTP/DHCP, Reply, length 300, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Your-IP 10.111.9.226
+	  Server-IP 10.111.9.228
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  file "pxelinux.0"[|bootp]
+12:22:35.761794 c4:34:6b:b7:22:20 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 590: (tos 0x0, ttl 64, id 1, offset 0, flags [none], proto UDP (17), length 576)
+    0.0.0.0.68 > 255.255.255.255.67: [udp sum ok] BOOTP/DHCP, Request from c4:34:6b:b7:22:20, length 548, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Request
+	    Requested-IP Option 50, length 4: 10.111.9.226
+	    Parameter-Request Option 55, length 24: 
+	      Subnet-Mask, Time-Zone, Default-Gateway, IEN-Name-Server
+	      Domain-Name-Server, RL, Hostname, BS
+	      Domain-Name, SS, RP, EP
+	      Vendor-Option, Server-ID, Vendor-Class, BF
+	      Option 128, Option 129, Option 130, Option 131
+	      Option 132, Option 133, Option 134, Option 135
+	    MSZ Option 57, length 2: 1260
+	    Server-ID Option 54, length 4: 10.111.9.228
+	    GUID Option 97, length 17: 0.55.49.57.48.54.52.77.88.81.52.53.50.48.52.81.80
+	    ARCH Option 93, length 2: 0
+	    NDI Option 94, length 3: 1.2.1
+	    Vendor-Class Option 60, length 32: "PXEClient:Arch:00000:UNDI:002001"
+	    END Option 255, length 0
+	    PAD Option 0, length 0, occurs 200
+12:22:35.761951 00:50:56:b8:f8:f5 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    10.111.9.228.67 > 255.255.255.255.68: [udp sum ok] BOOTP/DHCP, Reply, length 300, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Your-IP 10.111.9.226
+	  Server-IP 10.111.9.228
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  file "pxelinux.0"[|bootp]
+^C
+4 packets captured
+4 packets received by filter
+0 packets dropped by kernel
+usracls05613:/var/log # tcpdump -i eth0 port 67 or port 68 -e -n -vvv
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+12:33:14.836115 c4:34:6b:b7:22:20 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 590: (tos 0x0, ttl 64, id 0, offset 0, flags [none], proto UDP (17), length 576)
+    0.0.0.0.68 > 255.255.255.255.67: [udp sum ok] BOOTP/DHCP, Request from c4:34:6b:b7:22:20, length 548, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Discover
+	    Parameter-Request Option 55, length 24: 
+	      Subnet-Mask, Time-Zone, Default-Gateway, IEN-Name-Server
+	      Domain-Name-Server, RL, Hostname, BS
+	      Domain-Name, SS, RP, EP
+	      Vendor-Option, Server-ID, Vendor-Class, BF
+	      Option 128, Option 129, Option 130, Option 131
+	      Option 132, Option 133, Option 134, Option 135
+	    MSZ Option 57, length 2: 1260
+	    GUID Option 97, length 17: 0.55.49.57.48.54.52.77.88.81.52.53.50.48.52.81.80
+	    ARCH Option 93, length 2: 0
+	    NDI Option 94, length 3: 1.2.1
+	    Vendor-Class Option 60, length 32: "PXEClient:Arch:00000:UNDI:002001"
+	    END Option 255, length 0
+	    PAD Option 0, length 0, occurs 212
+12:33:14.836531 00:50:56:b8:f8:f5 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    10.111.9.228.67 > 255.255.255.255.68: [udp sum ok] BOOTP/DHCP, Reply, length 300, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Your-IP 10.111.9.226
+	  Server-IP 10.111.9.228
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  file "pxelinux.0"[|bootp]
+12:33:18.900442 c4:34:6b:b7:22:20 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 590: (tos 0x0, ttl 64, id 1, offset 0, flags [none], proto UDP (17), length 576)
+    0.0.0.0.68 > 255.255.255.255.67: [udp sum ok] BOOTP/DHCP, Request from c4:34:6b:b7:22:20, length 548, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  Vendor-rfc1048 Extensions
+	    Magic Cookie 0x63825363
+	    DHCP-Message Option 53, length 1: Request
+	    Requested-IP Option 50, length 4: 10.111.9.226
+	    Parameter-Request Option 55, length 24: 
+	      Subnet-Mask, Time-Zone, Default-Gateway, IEN-Name-Server
+	      Domain-Name-Server, RL, Hostname, BS
+	      Domain-Name, SS, RP, EP
+	      Vendor-Option, Server-ID, Vendor-Class, BF
+	      Option 128, Option 129, Option 130, Option 131
+	      Option 132, Option 133, Option 134, Option 135
+	    MSZ Option 57, length 2: 1260
+	    Server-ID Option 54, length 4: 10.111.9.228
+	    GUID Option 97, length 17: 0.55.49.57.48.54.52.77.88.81.52.53.50.48.52.81.80
+	    ARCH Option 93, length 2: 0
+	    NDI Option 94, length 3: 1.2.1
+	    Vendor-Class Option 60, length 32: "PXEClient:Arch:00000:UNDI:002001"
+	    END Option 255, length 0
+	    PAD Option 0, length 0, occurs 200
+12:33:18.900974 00:50:56:b8:f8:f5 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    10.111.9.228.67 > 255.255.255.255.68: [udp sum ok] BOOTP/DHCP, Reply, length 300, xid 0x6cb72220, secs 4, Flags [Broadcast] (0x8000)
+	  Your-IP 10.111.9.226
+	  Server-IP 10.111.9.228
+	  Client-Ethernet-Address c4:34:6b:b7:22:20
+	  file "pxelinux.0"[|bootp]
